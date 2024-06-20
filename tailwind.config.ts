@@ -14,13 +14,24 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "lofi": "url('/images/lofi_background.jpeg')",
       },
+
       keyframes: {
         lofiPulse : {
           "50%": {'opacity': '0.5'},
+        },
+        meteor : {
+          "0%": { transform: "rotate(215deg) translateX(0)", 'opacity': '1 '},
+          "70%": { 'opacity': '1 '},
+          "100%": {
+            transform: "rotate(215deg) translateX(-600px)",
+            'opacity': '0',
+          },
         }
       },
+
       animation: {
-        lofiPulse: "lofiPulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        lofiPulse: "lofiPulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        meteor: "meteor 5s linear infinite",
       }
     },
   },

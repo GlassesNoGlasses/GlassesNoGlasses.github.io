@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react";
+import { MeteorBackground } from "./components/metors/MeteorBackground";
 
 export default function Home() {
 
@@ -12,6 +13,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
+      <MeteorBackground numMeteors={13} /> 
       <div className="flex h-screen w-screen bg-lofi bg-cover align-middle justify-center animate-lofiPulse">
         <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
 
@@ -33,6 +35,7 @@ export default function Home() {
 
         </div>
       </div>
+      
       <div>
 
       </div>
