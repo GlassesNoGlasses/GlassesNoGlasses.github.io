@@ -12,7 +12,16 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "lofi": "url('/images/lofi_background.jpeg')",
       },
+      keyframes: {
+        lofiPulse : {
+          "50%": {'opacity': '0.5'},
+        }
+      },
+      animation: {
+        lofiPulse: "lofiPulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      }
     },
   },
   plugins: [],
