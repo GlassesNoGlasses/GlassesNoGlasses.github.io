@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
+import { Project } from "./components/project-display/Project";
 
 export default function Home() {
 
@@ -32,13 +33,13 @@ export default function Home() {
               </a>
             </div>
           </div>
-
         </div>
       </div>
       
-      <div>
-
+      <div className="flex flex-col h-fit w-full px-8 bg-black">
+        <Project title="Project 1" description="This is a description of project 1" />
       </div>
+
     </main>
   );
 }
