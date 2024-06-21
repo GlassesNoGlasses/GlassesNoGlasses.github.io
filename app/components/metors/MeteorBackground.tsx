@@ -23,7 +23,7 @@ export const MeteorBackground = ({
             )}
             style={{
               top: Math.floor(Math.random() * (50 - -50) + -50) + "px",
-              left: Math.floor(Math.random() * (500 - -500) + -500) + "px",
+              left: Math.floor(Math.random() * (600 - -600) + -600) + "px",
               animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
               animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
             }}

@@ -36,45 +36,51 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="flex flex-col h-fit w-full bg-black mt-40 gap-20">
-        <h1 id="projects-title"
-        className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
-        before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-        after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto
-        animate-fade-up animate-once animate-duration-[2500ms] animate-delay-0 animate-ease-out">Projects
-        </h1>
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-gray-800 to-black">
+        <div className="flex flex-col h-fit w-full mt-40 gap-20">
+          <h1 id="projects-title"
+          className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
+          before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
+          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto
+          animate-fade-up animate-once animate-duration-[2500ms] animate-delay-0 animate-ease-out">Projects
+          </h1>
 
-        <div id="projects"
-        className="flex flex-col h-fit w-full px-8 gap-40">
-          <div id="machine-learning"
-          className="flex flex-col h-fit w-full align-middle gap-8">
-            <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-            after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto 
-            animate-fade-left animate-once animate-duration-1000">
-            AI & Machine Learning
-            </h2>
-            <div id="machine-learning-projects"
-            className="flex flex-col h-fit w-full gap-4">
-              <Project title="Face Recognition" description="This is a description of project 1" />
-              <Project title="Spam Classification" description="This is a description of project 1" leftAnimate={false}/>
-              <Project title="Snake AI" description="This is a description of project 1" />
-              <Project title="Finger Painting" description="This is a description of project 1" leftAnimate={false}/>
+          <div id="projects"
+          className="flex flex-col h-fit w-full px-8 gap-40">
+            <div id="machine-learning"
+            className="flex flex-col h-fit w-full align-middle gap-8">
+              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
+              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto 
+              animate-fade-left animate-once animate-duration-1000">
+              AI & Machine Learning
+              </h2>
+              <div id="machine-learning-projects"
+              className="flex flex-col h-fit w-full gap-4">
+                <Project
+                title="Face Recognition"
+                subtitle="LBPH & Eigenface Algorithms"
+                description="This is a description of project 1"
+                />
+                <Project title="Spam Classification" description="This is a description of project 1" leftAnimate={false}/>
+                <Project title="Snake AI" description="This is a description of project 1" />
+                <Project title="Finger Painting" description="This is a description of project 1" leftAnimate={false}/>
+              </div>
             </div>
-          </div>
 
-          <div id="web-development"
-          className="flex flex-col h-fit w-full align-middle gap-8">
-            <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-            before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-            animate-fade-right animate-once animate-duration-1000">
-            Web Development
-            </h2>
-            <div id="web-development-projects"
-            className="flex flex-col h-fit w-full gap-4">
-              <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
-              <Project title="Manga Update" description="This is a description of project 1" />
-              <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
-              <Project title="Fortune Cookie" description="This is a description of project 1"/>
+            <div id="web-development"
+            className="flex flex-col h-fit w-full align-middle gap-8">
+              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
+              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
+              animate-fade-right animate-once animate-duration-1000">
+              Web Development
+              </h2>
+              <div id="web-development-projects"
+              className="flex flex-col h-fit w-full gap-4">
+                <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
+                <Project title="Manga Update" description="This is a description of project 1" />
+                <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
+                <Project title="Fortune Cookie" description="This is a description of project 1"/>
+              </div>
             </div>
           </div>
         </div>
