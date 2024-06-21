@@ -3,6 +3,8 @@
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
+import { ProjectProps } from "./components/project-display/ProjectProps";
+import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
 
 export default function Home() {
 
@@ -56,14 +58,10 @@ export default function Home() {
               </h2>
               <div id="machine-learning-projects"
               className="flex flex-col h-fit w-full gap-4">
-                <Project
-                title="Face Recognition"
-                subtitle="LBPH & Eigenface Algorithms"
-                description="This is a description of project 1"
-                />
-                <Project title="Spam Classification" description="This is a description of project 1" leftAnimate={false}/>
-                <Project title="Snake AI" description="This is a description of project 1" />
-                <Project title="Finger Painting" description="This is a description of project 1" leftAnimate={false}/>
+                <Project {...FaceRecognition} />
+                <Project {...SpamClassification} leftAnimate={false}/>
+                <Project {...SnakeAI} />
+                <Project {...FingerPainting} leftAnimate={false}/>
               </div>
             </div>
 
@@ -76,10 +74,10 @@ export default function Home() {
               </h2>
               <div id="web-development-projects"
               className="flex flex-col h-fit w-full gap-4">
-                <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
+                {/* <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
                 <Project title="Manga Update" description="This is a description of project 1" />
                 <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
-                <Project title="Fortune Cookie" description="This is a description of project 1"/>
+                <Project title="Fortune Cookie" description="This is a description of project 1"/> */}
               </div>
             </div>
           </div>
