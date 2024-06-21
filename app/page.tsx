@@ -3,21 +3,41 @@
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
-import { ProjectProps } from "./components/project-display/ProjectProps";
 import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
+import { ItemsBar } from "./components/items-bar/ItemsBar";
+import { CampfireIcon, StarFallIcon } from "./constants/icons";
 
 export default function Home() {
 
   const svgWidth: number = 100;
-  const svgHeight:number = 100;
+  const svgHeight: number = 100;
 
   const [initials, setInitials] = React.useState<string>("N.W.");
   const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
+  const [animateMeteors, setAnimateMeteors] = React.useState<boolean>(true);
+  const [campfire, setCampfire] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    const audio = document.getElementById(`${CampfireIcon.name + "-audio"}`) as HTMLAudioElement;
+    
+    if (audio) {
+      campfire ? audio.play() : audio.pause();
+    }
+
+  }, [campfire])
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
-      <MeteorBackground numMeteors={13} /> 
-      <div className="flex h-screen w-screen bg-lofi bg-cover align-middle justify-center animate-lofiPulse">
+      <MeteorBackground numMeteors={13} isOn={animateMeteors}/> 
+      <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
+        ${animateMeteors && !campfire ? "animate-lightFadeOut" : "animate-lightFadeIn"}
+        ${campfire && "animate-lofiPulse"}`}
+        >
+          <ItemsBar
+          items={[
+            {...StarFallIcon, callback: () => setAnimateMeteors(!animateMeteors)},
+            {...CampfireIcon, callback: () => setCampfire(!campfire)}]}
+          />
         <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
 
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>

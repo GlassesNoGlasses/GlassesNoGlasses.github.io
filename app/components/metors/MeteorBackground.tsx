@@ -4,14 +4,15 @@ import clsx from 'clsx'
 import { MeteorBackgroundProps } from './MeteorBackgroundProps'
 
 export const MeteorBackground = ({
-    numMeteors = 10
+    numMeteors = 10,
+    isOn,
 } : MeteorBackgroundProps) => {
 
   const meteors = Array.from({length: numMeteors}, (_, i) => i);
     
   return (
     <>
-      {
+      { isOn && 
       meteors.map((meteor, index) => {
         return (
           <span
