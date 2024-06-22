@@ -7,6 +7,7 @@ import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./
 import { ItemsBar } from "./components/items-bar/ItemsBar";
 import { CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Item } from "./components/interfaces/Item";
+import { TimelineMilestone } from "./components/timeline/TimelineMilestone";
 
 export default function Home() {
 
@@ -20,6 +21,8 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
+
+      {/* Top View & Introduction */}
       <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
       <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
         ${meteors.isActive && !campfire.isActive ? "animate-lightFadeOut" : "animate-lightFadeIn"}
@@ -32,10 +35,8 @@ export default function Home() {
           ]}
           />
         <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
-
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>
           <h2 className="text-4xl text-center font-bold font-sans text-zinc-200" id="title">{titleText}</h2>
-
           <div className="flex w-full h-fit align-middle justify-center pt-8">
             <div className="flex w-1/2 justify-evenly align-middle" id="socials">
               <a href="https://github.com/GlassesNoGlasses" target="_blank">
@@ -50,7 +51,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+    
+      {/* Projects */}
       <div className="flex flex-col h-fit w-full bg-gradient-to-b from-gray-800 to-black">
         <div className="flex flex-col h-fit w-full mt-40 gap-20">
           <h1 id="projects-title"
@@ -61,7 +63,7 @@ export default function Home() {
           </h1>
 
           <div id="projects"
-          className="flex flex-col h-fit w-full px-8 gap-40">
+          className="flex h-fit w-full px-8 gap-40">
             <div id="machine-learning"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
@@ -69,34 +71,33 @@ export default function Home() {
               animate-fade-left animate-once animate-duration-1000">
               AI & Machine Learning
               </h2>
-              <div id="machine-learning-projects"
-              className="flex flex-col h-fit w-full gap-4">
-                <Project {...FaceRecognition} />
-                <Project {...SpamClassification} leftAnimate={false}/>
-                <Project {...SnakeAI} />
-                <Project {...FingerPainting} leftAnimate={false}/>
-              </div>
-            </div>
-
-            <div id="web-development"
-            className="flex flex-col h-fit w-full align-middle gap-8">
-              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-              animate-fade-right animate-once animate-duration-1000">
-              Web Development
-              </h2>
-              <div id="web-development-projects"
-              className="flex flex-col h-fit w-full gap-4">
-                {/* <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
-                <Project title="Manga Update" description="This is a description of project 1" />
-                <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
-                <Project title="Fortune Cookie" description="This is a description of project 1"/> */}
-              </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Timeline */}
+      <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+        {/* <!-- Project #1 --> */}
+        <TimelineMilestone id={FaceRecognition.title} compelete={true} backgroundStyle="">
+          <Project {...FaceRecognition} leftAnimate={false}/>
+        </TimelineMilestone>
+          
+          {/* <!-- Project #2 --> */}
+        <TimelineMilestone id={SpamClassification.title} compelete={true} backgroundStyle="">
+          <Project {...SpamClassification}/>
+        </TimelineMilestone>
+        
+        {/* <!-- Project #3 --> */}
+        <TimelineMilestone id={SnakeAI.title} compelete={true} backgroundStyle="">
+          <Project {...SnakeAI} leftAnimate={false}/>
+        </TimelineMilestone>
+        
+        {/* <!-- Project #4 --> */}
+        <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
+          <Project {...FingerPainting}/>
+        </TimelineMilestone>
+      </div>
     </main>
   );
 }
