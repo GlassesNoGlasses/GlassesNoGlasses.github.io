@@ -53,7 +53,7 @@ export default function Home() {
       </div>
     
       {/* Projects */}
-      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-gray-800 to-black">
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#111a2a] to-[#132438]">
         <div className="flex flex-col h-fit w-full mt-40 gap-20">
           <h1 id="projects-title"
           className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
@@ -71,33 +71,33 @@ export default function Home() {
               animate-fade-left animate-once animate-duration-1000">
               AI & Machine Learning
               </h2>
+              {/* Timeline */}
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                {/* <!-- Project #1 --> */}
+                <TimelineMilestone id={FaceRecognition.title} compelete={true} backgroundStyle="">
+                  <Project {...FaceRecognition} leftAnimate={false}/>
+                </TimelineMilestone>
+                  
+                  {/* <!-- Project #2 --> */}
+                <TimelineMilestone id={SpamClassification.title} compelete={true} backgroundStyle="">
+                  <Project {...SpamClassification}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #3 --> */}
+                <TimelineMilestone id={SnakeAI.title} compelete={true} backgroundStyle="">
+                  <Project {...SnakeAI} leftAnimate={false}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #4 --> */}
+                <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
+                  <Project {...FingerPainting}/>
+                </TimelineMilestone>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-        {/* <!-- Project #1 --> */}
-        <TimelineMilestone id={FaceRecognition.title} compelete={true} backgroundStyle="">
-          <Project {...FaceRecognition} leftAnimate={false}/>
-        </TimelineMilestone>
-          
-          {/* <!-- Project #2 --> */}
-        <TimelineMilestone id={SpamClassification.title} compelete={true} backgroundStyle="">
-          <Project {...SpamClassification}/>
-        </TimelineMilestone>
-        
-        {/* <!-- Project #3 --> */}
-        <TimelineMilestone id={SnakeAI.title} compelete={true} backgroundStyle="">
-          <Project {...SnakeAI} leftAnimate={false}/>
-        </TimelineMilestone>
-        
-        {/* <!-- Project #4 --> */}
-        <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
-          <Project {...FingerPainting}/>
-        </TimelineMilestone>
-      </div>
     </main>
   );
 }
