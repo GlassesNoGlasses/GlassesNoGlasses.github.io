@@ -4,14 +4,15 @@ import clsx from 'clsx'
 import { MeteorBackgroundProps } from './MeteorBackgroundProps'
 
 export const MeteorBackground = ({
-    numMeteors = 10
+    numMeteors = 10,
+    isOn,
 } : MeteorBackgroundProps) => {
 
   const meteors = Array.from({length: numMeteors}, (_, i) => i);
     
   return (
     <>
-      {
+      { isOn && 
       meteors.map((meteor, index) => {
         return (
           <span
@@ -23,7 +24,7 @@ export const MeteorBackground = ({
             )}
             style={{
               top: Math.floor(Math.random() * (50 - -50) + -50) + "px",
-              left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+              left: Math.floor(Math.random() * (600 - -600) + -600) + "px",
               animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
               animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
             }}

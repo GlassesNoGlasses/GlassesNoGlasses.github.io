@@ -2,19 +2,35 @@
 
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
+import { Project } from "./components/project-display/Project";
+import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
+import { ItemsBar } from "./components/items-bar/ItemsBar";
+import { CampfireIcon, MeteorsIcon } from "./constants/icons";
+import { Item } from "./components/interfaces/Item";
 
 export default function Home() {
 
   const svgWidth: number = 100;
-  const svgHeight:number = 100;
+  const svgHeight: number = 100;
 
   const [initials, setInitials] = React.useState<string>("N.W.");
   const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
+  const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
+  const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
-      <MeteorBackground numMeteors={13} /> 
-      <div className="flex h-screen w-screen bg-lofi bg-cover align-middle justify-center animate-lofiPulse">
+      <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
+      <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
+        ${meteors.isActive && !campfire.isActive ? "animate-lightFadeOut" : "animate-lightFadeIn"}
+        ${campfire.isActive && "animate-lofiPulse"}`}
+        >
+          <ItemsBar
+          items={[
+            {...meteors, callback: () => setMeteors(prev => ({...prev, isActive: !prev.isActive}))},
+            {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))}
+          ]}
+          />
         <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
 
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>
@@ -32,13 +48,55 @@ export default function Home() {
               </a>
             </div>
           </div>
-
         </div>
       </div>
       
-      <div>
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-gray-800 to-black">
+        <div className="flex flex-col h-fit w-full mt-40 gap-20">
+          <h1 id="projects-title"
+          className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
+          before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
+          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto
+          animate-fade-up animate-once animate-duration-[2500ms] animate-delay-0 animate-ease-out">Projects
+          </h1>
 
+          <div id="projects"
+          className="flex flex-col h-fit w-full px-8 gap-40">
+            <div id="machine-learning"
+            className="flex flex-col h-fit w-full align-middle gap-8">
+              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
+              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto 
+              animate-fade-left animate-once animate-duration-1000">
+              AI & Machine Learning
+              </h2>
+              <div id="machine-learning-projects"
+              className="flex flex-col h-fit w-full gap-4">
+                <Project {...FaceRecognition} />
+                <Project {...SpamClassification} leftAnimate={false}/>
+                <Project {...SnakeAI} />
+                <Project {...FingerPainting} leftAnimate={false}/>
+              </div>
+            </div>
+
+            <div id="web-development"
+            className="flex flex-col h-fit w-full align-middle gap-8">
+              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
+              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
+              animate-fade-right animate-once animate-duration-1000">
+              Web Development
+              </h2>
+              <div id="web-development-projects"
+              className="flex flex-col h-fit w-full gap-4">
+                {/* <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
+                <Project title="Manga Update" description="This is a description of project 1" />
+                <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
+                <Project title="Fortune Cookie" description="This is a description of project 1"/> */}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </main>
   );
 }

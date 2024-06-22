@@ -26,15 +26,28 @@ const config: Config = {
             transform: "rotate(215deg) translateX(-600px)",
             'opacity': '0',
           },
+        },
+        lightFadeOut: {
+          "0%": { 'opacity': '1'},
+          "100%": { 'opacity': '0.6'},
+        },
+        lightFadeIn: {
+          "0%": { 'opacity': '0.6'},
+          "100%": { 'opacity': '1'},
         }
       },
 
+
       animation: {
         lofiPulse: "lofiPulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        meteor: "meteor 5s linear infinite",
+        meteor: "meteor 4s linear infinite",
+        lightFadeOut: "lightFadeOut 3s linear forwards",
+        lightFadeIn: "lightFadeIn 3s linear forwards",
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 };
 export default config;
