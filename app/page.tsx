@@ -5,7 +5,8 @@ import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
 import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
-import { CampfireIcon, StarFallIcon } from "./constants/icons";
+import { CampfireIcon, MeteorsIcon } from "./constants/icons";
+import { Item } from "./components/interfaces/Item";
 
 export default function Home() {
 
@@ -14,29 +15,21 @@ export default function Home() {
 
   const [initials, setInitials] = React.useState<string>("N.W.");
   const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
-  const [animateMeteors, setAnimateMeteors] = React.useState<boolean>(true);
-  const [campfire, setCampfire] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    const audio = document.getElementById(`${CampfireIcon.name + "-audio"}`) as HTMLAudioElement;
-    
-    if (audio) {
-      campfire ? audio.play() : audio.pause();
-    }
-
-  }, [campfire])
+  const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
+  const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
-      <MeteorBackground numMeteors={13} isOn={animateMeteors}/> 
+      <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
       <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
-        ${animateMeteors && !campfire ? "animate-lightFadeOut" : "animate-lightFadeIn"}
-        ${campfire && "animate-lofiPulse"}`}
+        ${meteors.isActive && !campfire.isActive ? "animate-lightFadeOut" : "animate-lightFadeIn"}
+        ${campfire.isActive && "animate-lofiPulse"}`}
         >
           <ItemsBar
           items={[
-            {...StarFallIcon, callback: () => setAnimateMeteors(!animateMeteors)},
-            {...CampfireIcon, callback: () => setCampfire(!campfire)}]}
+            {...meteors, callback: () => setMeteors(prev => ({...prev, isActive: !prev.isActive}))},
+            {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))}
+          ]}
           />
         <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
 

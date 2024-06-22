@@ -3,6 +3,7 @@ export interface Item {
     id: number;
     name: string;
     iconPath: string;
+    isActive: boolean;
     audioPath?: string;
-    callback: () => void;
+    callback: (item: Item) => void;
 }
