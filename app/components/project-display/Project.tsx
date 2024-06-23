@@ -21,7 +21,7 @@ export const Project = ({
   return (
     <div className={`flex flex-col ${animateDisplay}`}>
       <a href={projectLink} target='_blank'>
-        <h1 className={`${textDisplay} text-4xl font-bold font-sans text-yellow-100 underline`}>{title}</h1>
+        <h1 className={`${textDisplay} text-4xl font-bold font-sans text-yellow-100 underline hover:brightness-110`}>{title}</h1>
       </a>
         {subtitle && <h2 className={`${textDisplay} text-2xl font-serif text-zinc-200 pt-2`}>{subtitle}</h2>}
         <div className={`flex flex-row gap-2 pt-4 ${iconDisplayStyle}`}>

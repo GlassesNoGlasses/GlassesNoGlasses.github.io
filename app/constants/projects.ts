@@ -23,9 +23,11 @@ const programming = {
 
 export const FaceRecognition: ProjectProps = {
     title: "Face Recognition",
-    subtitle: "AI & Machine Learning",
+    subtitle: "Your own Mac OS Face ID",
     projectLink: "https://github.com/GlassesNoGlasses/ComputerVision",
-    description: "A face recognition model that uses a convolutional neural network to classify faces.",
+    description: `One of the most fun and rewarding projects I've worked on, 
+    this face recognition model implements both the LBPH and Eigenface approaches utilizing OpenCV, Scikit-Learn, Pandas, and NumPy. 
+    Custom data pipelines were created to preprocess and augment the users facial data, captured using webcams and the OpenCV library.`,
     imagePaths: ["https://via.placeholder.com/150"],
     languages: [programming.Python],
     frameworks: [programming.OpenCV, programming.SKLearn, programming.Pandas, programming.NumPy]
@@ -33,27 +35,32 @@ export const FaceRecognition: ProjectProps = {
 
 export const FingerPainting: ProjectProps = {
     title: "Finger Painting",
-    subtitle: "AI & Machine Learning",
+    subtitle: "Childrenhood Throwback",
     projectLink: "https://github.com/GlassesNoGlasses/ComputerVision",
-    description: "A finger painting model that uses a convolutional neural network to classify finger paintings.",
+    description: `The first computer vision project I worked on, this finger painting model uses OpenCV, Pandas, NumPy, 
+    and Google's Gemini AI to track the user's finger and draw on the screen. The model is able to track the user's finger via 
+    OpenCV webcam access and draw on the screen in real-time. A good introductory project all in all.`,
     languages: [programming.Python],
     frameworks: [programming.OpenCV, programming.Gemini, programming.Pandas, programming.NumPy]
 }
 
 export const SpamClassification: ProjectProps = {
     title: "Spam Classification",
-    subtitle: "AI & Machine Learning",
+    subtitle: "Stop the Spam!",
     projectLink: "https://github.com/GlassesNoGlasses/TFProjects/blob/main/projects/text/SMS_Spam_Classification.ipynb",
-    description: "A spam classification model that uses TensorFlow, recurrent neural networks, and LLM procedures to classify spam messages.",
+    description: `Who likes spam messages? Trick question, no one does. After being bombarded with spam messages, I decided 
+    to take matters into my own hand and build a spam classification model using TensorFlow, recurrent neural networks, and LLM procedures.`,
     languages: [programming.Python],
     frameworks: [programming.TensorFlow, programming.SKLearn, programming.Jupyter, programming.Pandas, programming.NumPy]
 }
 
 export const SnakeAI: ProjectProps = {
     title: "Snake Game AI",
-    subtitle: "AI & Machine Learning",
+    subtitle: "Bot vs. Bot",
     projectLink: "https://github.com/GlassesNoGlasses/PythonProjects/tree/main/Snake",
-    description: "A spam classification model that uses TensorFlow, recurrent neural networks, and LLM procedures to classify spam messages.",
+    description: `Ever had to stop a game of snake midway through because your teachers or managers was passing through? Well, 
+    you won't have to do that anymore! This snake game AI is able to play the game of snake on its own, utilizing the Pygame library for 
+    game logistics and PyTorch to train and control the snake.`,
     languages: [programming.Python],
     frameworks: [programming.PyTorch, programming.MatPlotLib, programming.Pandas, programming.NumPy]
 }

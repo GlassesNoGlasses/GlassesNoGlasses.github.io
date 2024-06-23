@@ -34,7 +34,8 @@ export default function Home() {
             {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))}
           ]}
           />
-        <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
+        <div className={`flex flex-col h-full w-full align-middle gap-4 justify-center
+          ${(meteors.isActive || campfire.isActive) && "animate-lofiPulse"}`}>
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>
           <h2 className="text-4xl text-center font-bold font-sans text-zinc-200" id="title">{titleText}</h2>
           <div className="flex w-full h-fit align-middle justify-center pt-8">
@@ -53,7 +54,7 @@ export default function Home() {
       </div>
     
       {/* Projects */}
-      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#111a2a] to-[#132438]">
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#0e1824] to-[#132438]">
         <div className="flex flex-col h-fit w-full mt-40 gap-20">
           <h1 id="projects-title"
           className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
