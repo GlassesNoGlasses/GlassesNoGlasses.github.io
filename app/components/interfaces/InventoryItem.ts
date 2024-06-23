@@ -7,4 +7,5 @@ export interface InventoryItem {
     imgPath: string;
     quantity: number;
     isConsumable: boolean;
+    clickMessage?: string;
 }

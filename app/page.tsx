@@ -14,6 +14,7 @@ import { Inventory } from "./components/inventory/Inventory";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import { GameMessage } from "./components/game-message/GameMessage";
+import { Resume } from "./constants/inventoryItems";
 
 export default function Home() {
 
@@ -40,7 +41,7 @@ export default function Home() {
       <Modal showModal={bag.isActive}
       closeModal={() => setBag(prev => ({...prev, isActive: false}))}
       openModal={() => setBag(prev => ({...prev, isActive: true}))}>
-        <Inventory inventoryItems={[]} isActive={bag.isActive} callback={handleBagCallback}/>
+        <Inventory inventoryItems={[Resume]} isActive={bag.isActive} callback={handleBagCallback}/>
       </Modal>
 
       {/* Top View & Introduction */}

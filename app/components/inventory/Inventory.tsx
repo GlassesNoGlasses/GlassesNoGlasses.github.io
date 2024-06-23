@@ -74,12 +74,13 @@ export const Inventory = ({
             className='h-16 w-16 border-white border-2 rounded-full hover:bg-white'/>
         </button>
 
-        <div className={`${isActive && "animate-fade-down animate-duration-300 animate-delay-400"} w-full h-full`}>
+        <div className={`${isActive && "animate-fade-down animate-duration-300 animate-delay-400"} w-full h-full flex flex-col gap-4`}>
             {
                 displayItems.length === 0 ? generateEmptySlot() :
                 displayItems.map((item, index) => {
                     return (
-                        <div key={index} className='flex flex-row gap-12 bg-slate-400 border-sky-600 border-double border-4 h-fit w-full justify-between align-middle'>
+                        <div key={index} className='flex flex-row gap-12 bg-slate-400 border-sky-600 border-double border-4 h-fit w-full justify-between align-middle'
+                        onClick={() => setMessage(item.clickMessage ? item.clickMessage : "")}>
                             <img src={item.imgPath} alt={item.name} className='h-24 w-24'/>
                             <div className='flex h-full w-1/2 align-middle justify-center'>
                                 <div className='flex flex-col h-full pb-2'>
