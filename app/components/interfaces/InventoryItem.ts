@@ -5,6 +5,6 @@ export interface InventoryItem {
     subtext?: string;
     description: string;
     imgPath: string;
-    callback: (item: InventoryItem) => void;
     quantity: number;
+    isConsumable: boolean;
 }

@@ -13,7 +13,7 @@ import { Modal } from "./components/modal/Modal";
 import { Inventory } from "./components/inventory/Inventory";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-import { Coffee } from "./constants/inventoryItems";
+import { GameMessage } from "./components/game-message/GameMessage";
 
 export default function Home() {
 
@@ -40,7 +40,7 @@ export default function Home() {
       <Modal showModal={bag.isActive}
       closeModal={() => setBag(prev => ({...prev, isActive: false}))}
       openModal={() => setBag(prev => ({...prev, isActive: true}))}>
-        <Inventory inventoryItems={[Coffee]} isActive={bag.isActive} callback={handleBagCallback}/>
+        <Inventory inventoryItems={[]} isActive={bag.isActive} callback={handleBagCallback}/>
       </Modal>
 
       {/* Top View & Introduction */}

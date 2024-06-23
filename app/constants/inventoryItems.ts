@@ -5,8 +5,8 @@ export const EmptySlot: InventoryItem = {
     name: 'Empty Slot',
     imgPath: '',
     description: 'Thanosed from existence',
-    callback: (item: InventoryItem) => console.log('Empty Slot'),
     quantity: 0,
+    isConsumable: false,
 }
 
 export const Coffee: InventoryItem = {
@@ -14,7 +14,7 @@ export const Coffee: InventoryItem = {
     name: "Coffee",
     description: "A nice cup of coffee to start your day",
     imgPath: '/svg/coffee.svg',
-    callback: (item: InventoryItem) => console.log('Coffee'),
     quantity: 1,
+    isConsumable: true,
 }
 
