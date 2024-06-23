@@ -48,7 +48,7 @@ const config: Config = {
         meteor: "meteor 4s linear infinite",
         lightFadeOut: "lightFadeOut 3s linear forwards",
         lightFadeIn: "lightFadeIn 3s linear forwards",
-        lightFadeInOut: "lightFadeInOut 3s linear forwards",
+        lightFadeInOut: "lightFadeInOut 5s linear forwards",
       }
     },
   },

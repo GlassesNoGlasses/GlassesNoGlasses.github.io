@@ -26,13 +26,12 @@ export const Inventory = ({
     const handleBagCallback = () => {
         callback();
         setCoffee(prev => ({...prev, quantity: 1}));
-        setDisplayItems(getDisplayableItems([...items, coffee]));
     }
 
     const handleItemClick = (item: InventoryItem) => {
         if (item.isConsumable) {
             if (item.name === 'Coffee') {
-                setNumCoffeesDrank(numCoffeesDrank + 1);
+                setNumCoffeesDrank(prev => prev + 1);
                 setCoffee(prev => ({...prev, quantity: Math.max(0, prev.quantity - 1)}));
             } else {
                 setItems(prev => {
@@ -48,6 +47,23 @@ export const Inventory = ({
     React.useEffect(() => {
         setDisplayItems(getDisplayableItems([...items, coffee]));
     }, [items, coffee])
+
+    React.useEffect(() => {
+        if (numCoffeesDrank === 1)
+            setMessage('You feel energetic and ready to go! ☕️');
+        else if (numCoffeesDrank === 2)
+            setMessage('Second cup is the best cup! ☕️☕️');
+        else if (numCoffeesDrank === 3)
+            setMessage('You feel like you can take on the universe! ☕️☕️☕️');
+        else if (numCoffeesDrank > 3)
+            setMessage('You... need some help...');
+        else if (numCoffeesDrank > 5)
+            setMessage('You... need some help... badly...');
+        else if (numCoffeesDrank > 7)
+            setMessage('A short life it is! ☕️☕️☕️☕️☕️☕️☕️☕️☕️');
+        else
+            setMessage('');
+    }, [numCoffeesDrank])
 
   return (
     <div className='flex flex-col gap-8 min-h-screen max-h-fit w-[50vw] align-middle overflow-y-auto'>
@@ -84,7 +100,7 @@ export const Inventory = ({
                 })
             }
         </div>
-    <GameMessage message="Welcome to my portfolio!"/>
+    <GameMessage message={message} key={numCoffeesDrank}/>
     </div>
   )
 }
