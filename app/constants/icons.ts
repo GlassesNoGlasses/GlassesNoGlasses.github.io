@@ -18,3 +18,13 @@ export const CampfireIcon: AudioItem = {
     audioPath: "/sounds/fire.mp3",
     playing: false,
 }
+
+export const BagIcon: Item = {
+    id: 2,
+    name: 'Bag',
+    iconPath: "/svg/bag.svg",
+    isActive: false,
+    callback: (item: Item) => console.log('Bag'),
+    animation: 'animate-bounce'
+}
+

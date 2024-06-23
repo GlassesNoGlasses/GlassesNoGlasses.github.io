@@ -1,0 +1,10 @@
+
+export interface InventoryItem {
+    id: number;
+    name: string;
+    subtext?: string;
+    description: string;
+    imgPath: string;
+    callback: (item: InventoryItem) => void;
+    quantity: number;
+}

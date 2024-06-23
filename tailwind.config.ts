@@ -34,7 +34,7 @@ const config: Config = {
         lightFadeIn: {
           "0%": { 'opacity': '0.6'},
           "100%": { 'opacity': '1'},
-        }
+        },
       },
 
 

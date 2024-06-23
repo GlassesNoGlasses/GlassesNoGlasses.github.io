@@ -22,7 +22,7 @@ export const ItemsBar = ({
     }
 
   return (
-    <div className='flex flex-row h-fit w-full align-middle justify-end bg-inherit'>
+    <div className='flex flex-row h-fit w-full align-middle justify-end bg-inherit pt-4'>
         {
         items.map((item: Item, index: number) => {
             return (
@@ -32,7 +32,7 @@ export const ItemsBar = ({
                 >
                     {item.audioPath && <audio id={item.name + "-audio"} src={item.audioPath} loop={true}/>}
                     <img src={item.iconPath} alt={item.name} className={`h-12 w-12 rounded-xl
-                        ${item.isActive ? "bg-slate-200" : "bg-slate-500"} `}/>
+                        ${item.isActive ? "bg-slate-200 " : "bg-slate-500 "} ${item.animation ? item.animation : ""}`}/>
                 </button>
             )
         })
