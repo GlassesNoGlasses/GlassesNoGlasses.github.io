@@ -3,10 +3,14 @@
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
-import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
+import { FaceRecognition, FingerPainting, SpamClassification, Biscord,
+   SnakeAI, Grantors, MangaUpdate, WebpageAnalytics, FortuneCookie } from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
 import { CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Item } from "./components/interfaces/Item";
+import { TimelineMilestone } from "./components/timeline/TimelineMilestone";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 export default function Home() {
 
@@ -18,8 +22,14 @@ export default function Home() {
   const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
   const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
 
+  React.useEffect(() => {
+    AOS.init();
+  }, [])
+
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
+
+      {/* Top View & Introduction */}
       <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
       <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
         ${meteors.isActive && !campfire.isActive ? "animate-lightFadeOut" : "animate-lightFadeIn"}
@@ -31,11 +41,10 @@ export default function Home() {
             {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))}
           ]}
           />
-        <div className="flex flex-col h-full w-full align-middle gap-4 justify-center ">
-
+        <div className={`flex flex-col h-full w-full align-middle gap-4 justify-center
+          ${(meteors.isActive || campfire.isActive) && "animate-lofiPulse"}`}>
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>
           <h2 className="text-4xl text-center font-bold font-sans text-zinc-200" id="title">{titleText}</h2>
-
           <div className="flex w-full h-fit align-middle justify-center pt-8">
             <div className="flex w-1/2 justify-evenly align-middle" id="socials">
               <a href="https://github.com/GlassesNoGlasses" target="_blank">
@@ -50,14 +59,17 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
-      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-gray-800 to-black">
+    
+      {/* Projects */}
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#0e1824] from-35% via-indigo-600/10 via-70% to-[#132438]">
         <div className="flex flex-col h-fit w-full mt-40 gap-20">
           <h1 id="projects-title"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="linear"
           className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
           before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto
-          animate-fade-up animate-once animate-duration-[2500ms] animate-delay-0 animate-ease-out">Projects
+          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto">Projects
           </h1>
 
           <div id="projects"
@@ -65,32 +77,71 @@ export default function Home() {
             <div id="machine-learning"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto 
-              animate-fade-left animate-once animate-duration-1000">
+              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto"
+              data-aos="fade-left"
+              data-aoes-duation="1700"
+              data-aos-easing="ease-in-sine">
               AI & Machine Learning
               </h2>
-              <div id="machine-learning-projects"
-              className="flex flex-col h-fit w-full gap-4">
-                <Project {...FaceRecognition} />
-                <Project {...SpamClassification} leftAnimate={false}/>
-                <Project {...SnakeAI} />
-                <Project {...FingerPainting} leftAnimate={false}/>
+              {/* Timeline */}
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                {/* <!-- Project #1 --> */}
+                <TimelineMilestone id={FaceRecognition.title} compelete={true} backgroundStyle="">
+                  <Project {...FaceRecognition} leftAnimate={false}/>
+                </TimelineMilestone>
+                  
+                  {/* <!-- Project #2 --> */}
+                <TimelineMilestone id={SpamClassification.title} compelete={true} backgroundStyle="">
+                  <Project {...SpamClassification}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #3 --> */}
+                <TimelineMilestone id={SnakeAI.title} compelete={true} backgroundStyle="">
+                  <Project {...SnakeAI} leftAnimate={false}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #4 --> */}
+                <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
+                  <Project {...FingerPainting}/>
+                </TimelineMilestone>
               </div>
             </div>
 
             <div id="web-development"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-              animate-fade-right animate-once animate-duration-1000">
+              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto" 
+              data-aos="fade-right"
+              data-aoes-duation="1700"
+              data-aos-easing="ease-in-sine">
               Web Development
               </h2>
-              <div id="web-development-projects"
-              className="flex flex-col h-fit w-full gap-4">
-                {/* <Project title="Grantors" description="This is a description of project 1" leftAnimate={false} />
-                <Project title="Manga Update" description="This is a description of project 1" />
-                <Project title="Webpage Analytics" description="This is a description of project 1" leftAnimate={false}/>
-                <Project title="Fortune Cookie" description="This is a description of project 1"/> */}
+              {/* Timeline */}
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                {/* <!-- Project #1 --> */}
+                <TimelineMilestone id={Biscord.title} compelete={false} backgroundStyle="">
+                  <Project {...Biscord}/>
+                </TimelineMilestone>
+
+                {/* <!-- Project #2 --> */}
+                <TimelineMilestone id={Grantors.title} compelete={true} backgroundStyle="">
+                  <Project {...Grantors} leftAnimate={false}/>
+                </TimelineMilestone>
+                  
+                  {/* <!-- Project #3 --> */}
+                <TimelineMilestone id={FortuneCookie.title} compelete={true} backgroundStyle="">
+                  <Project {...FortuneCookie}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #4 --> */}
+                <TimelineMilestone id={MangaUpdate.title} compelete={true} backgroundStyle="">
+                  <Project {...MangaUpdate} leftAnimate={false}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #5 --> */}
+                <TimelineMilestone id={WebpageAnalytics.title} compelete={true} backgroundStyle="">
+                  <Project {...WebpageAnalytics}/>
+                </TimelineMilestone>
               </div>
             </div>
           </div>
