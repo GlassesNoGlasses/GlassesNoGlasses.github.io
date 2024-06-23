@@ -3,7 +3,8 @@
 import React from "react";
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
-import { FaceRecognition, FingerPainting, SpamClassification, SnakeAI } from "./constants/projects";
+import { FaceRecognition, FingerPainting, SpamClassification, Biscord,
+   SnakeAI, Grantors, MangaUpdate, WebpageAnalytics, FortuneCookie } from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
 import { CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Item } from "./components/interfaces/Item";
@@ -64,7 +65,7 @@ export default function Home() {
           </h1>
 
           <div id="projects"
-          className="flex h-fit w-full px-8 gap-40">
+          className="flex flex-col h-fit w-full px-8 gap-40">
             <div id="machine-learning"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
@@ -92,6 +93,42 @@ export default function Home() {
                 {/* <!-- Project #4 --> */}
                 <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
                   <Project {...FingerPainting}/>
+                </TimelineMilestone>
+              </div>
+            </div>
+
+            <div id="web-development"
+            className="flex flex-col h-fit w-full align-middle gap-8">
+              <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
+              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto
+              animate-fade-right animate-once animate-duration-1000">
+              Web Development
+              </h2>
+              {/* Timeline */}
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                {/* <!-- Project #1 --> */}
+                <TimelineMilestone id={Biscord.title} compelete={true} backgroundStyle="">
+                  <Project {...Biscord}/>
+                </TimelineMilestone>
+
+                {/* <!-- Project #2 --> */}
+                <TimelineMilestone id={Grantors.title} compelete={true} backgroundStyle="">
+                  <Project {...Grantors} leftAnimate={false}/>
+                </TimelineMilestone>
+                  
+                  {/* <!-- Project #3 --> */}
+                <TimelineMilestone id={FortuneCookie.title} compelete={true} backgroundStyle="">
+                  <Project {...FortuneCookie}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #4 --> */}
+                <TimelineMilestone id={MangaUpdate.title} compelete={true} backgroundStyle="">
+                  <Project {...MangaUpdate} leftAnimate={false}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #5 --> */}
+                <TimelineMilestone id={WebpageAnalytics.title} compelete={true} backgroundStyle="">
+                  <Project {...WebpageAnalytics}/>
                 </TimelineMilestone>
               </div>
             </div>
