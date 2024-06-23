@@ -5,5 +5,6 @@ export interface Item {
     iconPath: string;
     isActive: boolean;
     audioPath?: string;
+    animation?: string;
     callback: (item: Item) => void;
 }

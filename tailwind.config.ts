@@ -34,6 +34,11 @@ const config: Config = {
         lightFadeIn: {
           "0%": { 'opacity': '0.6'},
           "100%": { 'opacity': '1'},
+        },
+        lightFadeInOut: {
+          "0%": { 'opacity': '0.6'},
+          "50%": { 'opacity': '1'},
+          "100%": { 'opacity': '0'},
         }
       },
 
@@ -43,6 +48,7 @@ const config: Config = {
         meteor: "meteor 4s linear infinite",
         lightFadeOut: "lightFadeOut 3s linear forwards",
         lightFadeIn: "lightFadeIn 3s linear forwards",
+        lightFadeInOut: "lightFadeInOut 5s linear forwards",
       }
     },
   },

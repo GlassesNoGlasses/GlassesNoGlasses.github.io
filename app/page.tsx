@@ -6,11 +6,14 @@ import { Project } from "./components/project-display/Project";
 import { FaceRecognition, FingerPainting, SpamClassification, Biscord,
    SnakeAI, Grantors, MangaUpdate, WebpageAnalytics, FortuneCookie } from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
-import { CampfireIcon, MeteorsIcon } from "./constants/icons";
+import { BagIcon, CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Item } from "./components/interfaces/Item";
 import { TimelineMilestone } from "./components/timeline/TimelineMilestone";
+import { Modal } from "./components/modal/Modal";
+import { Inventory } from "./components/inventory/Inventory";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import { GameMessage } from "./components/game-message/GameMessage";
 
 export default function Home() {
 
@@ -21,13 +24,24 @@ export default function Home() {
   const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
   const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
   const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
+  const [bag, setBag] = React.useState<Item>(BagIcon);
 
   React.useEffect(() => {
     AOS.init();
   }, [])
 
+  const handleBagCallback = () => {
+    setBag(prev => ({...prev, isActive: !prev.isActive, animation: ""}));
+  }
+
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
+      {/* Inventory Modal */}
+      <Modal showModal={bag.isActive}
+      closeModal={() => setBag(prev => ({...prev, isActive: false}))}
+      openModal={() => setBag(prev => ({...prev, isActive: true}))}>
+        <Inventory inventoryItems={[]} isActive={bag.isActive} callback={handleBagCallback}/>
+      </Modal>
 
       {/* Top View & Introduction */}
       <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
@@ -38,7 +52,8 @@ export default function Home() {
           <ItemsBar
           items={[
             {...meteors, callback: () => setMeteors(prev => ({...prev, isActive: !prev.isActive}))},
-            {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))}
+            {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))},
+            {...bag, callback: () => handleBagCallback()},
           ]}
           />
         <div className={`flex flex-col h-full w-full align-middle gap-4 justify-center
