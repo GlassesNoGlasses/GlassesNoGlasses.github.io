@@ -9,6 +9,8 @@ import { ItemsBar } from "./components/items-bar/ItemsBar";
 import { CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Item } from "./components/interfaces/Item";
 import { TimelineMilestone } from "./components/timeline/TimelineMilestone";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 export default function Home() {
 
@@ -19,6 +21,10 @@ export default function Home() {
   const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
   const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
   const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
+
+  React.useEffect(() => {
+    AOS.init();
+  }, [])
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
@@ -55,13 +61,15 @@ export default function Home() {
       </div>
     
       {/* Projects */}
-      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#0e1824] to-[#132438]">
+      <div className="flex flex-col h-fit w-full bg-gradient-to-b from-[#0e1824] from-35% via-indigo-600/10 via-70% to-[#132438]">
         <div className="flex flex-col h-fit w-full mt-40 gap-20">
           <h1 id="projects-title"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="linear"
           className="flex flex-row px-4 text-7xl text-center font-bold font-sans text-slate-100 overflow-hidden 
           before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto 
-          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto
-          animate-fade-up animate-once animate-duration-[2500ms] animate-delay-0 animate-ease-out">Projects
+          after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto">Projects
           </h1>
 
           <div id="projects"
@@ -69,8 +77,10 @@ export default function Home() {
             <div id="machine-learning"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto 
-              animate-fade-left animate-once animate-duration-1000">
+              after:ml-8 after:flex-1 after:border-b-2 after:border-solid after:m-auto"
+              data-aos="fade-left"
+              data-aoes-duation="1700"
+              data-aos-easing="ease-in-sine">
               AI & Machine Learning
               </h2>
               {/* Timeline */}
@@ -100,8 +110,10 @@ export default function Home() {
             <div id="web-development"
             className="flex flex-col h-fit w-full align-middle gap-8">
               <h2 className="flex text-center text-4xl font-bold font-serif text-slate-200 overflow-hidden 
-              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto
-              animate-fade-right animate-once animate-duration-1000">
+              before:mr-8 before:flex-1 before:border-b-2 before:border-solid before:m-auto" 
+              data-aos="fade-right"
+              data-aoes-duation="1700"
+              data-aos-easing="ease-in-sine">
               Web Development
               </h2>
               {/* Timeline */}

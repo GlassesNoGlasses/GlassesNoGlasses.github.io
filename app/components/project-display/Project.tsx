@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { ProjectProps } from './ProjectProps'
+import 'aos/dist/aos.css'
 
 export const Project = ({
     title,
@@ -14,12 +15,15 @@ export const Project = ({
 }: ProjectProps) => {
 
   const iconDisplays = [...languages, ...frameworks];
-  const animateDisplay = leftAnimate ? 'animate-fade-left animate-duration-1000' : 'animate-fade-right animate-duration-1000';
   const textDisplay = leftAnimate ? 'text-left pl-6' : 'text-right pr-6';
   const iconDisplayStyle = leftAnimate ? 'pl-6 justify-start' : 'pr-6 justify-end';
+  const animateDisplay = leftAnimate ? 'fade-left' : 'fade-right';
 
   return (
-    <div className={`flex flex-col ${animateDisplay}`}>
+    <div className='flex flex-col'
+    data-aos={animateDisplay}
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-sine">
       <a href={projectLink} target='_blank'>
         <h1 className={`${textDisplay} text-4xl font-bold font-sans text-yellow-100 underline hover:brightness-110`}>{title}</h1>
       </a>
