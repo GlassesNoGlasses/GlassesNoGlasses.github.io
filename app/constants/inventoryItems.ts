@@ -29,3 +29,13 @@ export const Resume: InventoryItem = {
     clickMessage: 'You look at the resume. You feel a sense of pride and accomplishment.'
 }
 
+
+export const Bug: InventoryItem = {
+    id: 2,
+    name: "Bug",
+    subtext: "A bug. It's a bug.",
+    description: "Someone should probably fix this.",
+    quantity: 1,
+    imgPath: '/svg/bug.svg',
+    isConsumable: true,
+}

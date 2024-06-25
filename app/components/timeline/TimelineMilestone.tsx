@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { TimelineMilestoneProps } from './TimelineMilestonProps'
 
 export const TimelineMilestone = ({
