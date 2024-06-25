@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 export const GameMessage = ({message, key} : {message: string, key: number}) => {
   return ( message.length > 0 &&
     <div key={key} className='flex h-fit w-screen animate-lightFadeInOut absolute bottom-0 left-0 z-50 bg-opacity-25 bg-inherit'>

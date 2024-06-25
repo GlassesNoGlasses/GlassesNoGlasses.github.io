@@ -3,5 +3,7 @@ import { InventoryItem } from "../interfaces/InventoryItem";
 export interface InventoryProps {
     inventoryItems: InventoryItem[];
     isActive: boolean;
-    callback?: () => void;
+    callback: (items: InventoryItem[]) => void;
+    bugCallback: (numBugs: number) => void;
+    bugs: number;
 }

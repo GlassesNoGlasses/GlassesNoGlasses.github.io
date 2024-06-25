@@ -28,3 +28,11 @@ export const BagIcon: Item = {
     animation: 'animate-bounce'
 }
 
+export const BugIcon: Item = {
+    id: 3,
+    name: 'Bug',
+    iconPath: "/svg/bug.svg",
+    isActive: false,
+    callback: (item: Item) => alert("!̶̨̧̛̙̯̗̦̹͔͇̯̟̘͒̽̏͌́̐̒͌̌̄̈͘̕͜͝͠ͅ?̷̲̰̖̮̹͚͙̣͒̂̅͒͛́̃͑̊͝͠-̵̧̼̬̹̞̰͍͙̫͂̒͐̅̓͊͑͌̊͂̚͘͜͜͝-̴͇̿̉͆͗́̈̏̒͒͆̐̿̊͋͂̈́̽͝c̵AE̵̔̿̀̾̏̅͂̂̕͝s̵̢͖͔̩̼̲̥̲̰͎̦͕̙͕̿̌͊́̚͘ar=̴͓͔͖̩̯͇̺̱͕̬̤̬͗̐̈͆̍͗̈̈͌̎̈́̐̎̄͗̓̕͝͠|̴̡͍̠̣̗̟̟̩̗̮̩̖̝̭̏̈́́͒́̅̓͆̃̍̉̈̌̾͒͜ͅ|̶͒̉̀̉"),
+}
+

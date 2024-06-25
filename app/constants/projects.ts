@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ProjectProps } from "../components/project-display/ProjectProps";
 
 const programming = {

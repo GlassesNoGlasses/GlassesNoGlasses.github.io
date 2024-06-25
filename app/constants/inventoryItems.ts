@@ -16,5 +16,26 @@ export const Coffee: InventoryItem = {
     imgPath: '/svg/coffee.svg',
     quantity: 1,
     isConsumable: true,
+    clickMessage: 'A fresh cup of coffee, hot and inviting.'
 }
 
+export const Resume: InventoryItem = {
+    id: 1,
+    name: "Fancy Paper",
+    description: "A piece of paper with nice formatting. On closer inspection, it appears to be a resume of some sort. Must be important.",
+    imgPath: '/svg/resume.svg',
+    quantity: 1,
+    isConsumable: false,
+    clickMessage: 'You look at the resume. You feel a sense of pride and accomplishment.'
+}
+
+
+export const Bug: InventoryItem = {
+    id: 2,
+    name: "Bug",
+    subtext: "A bug. It's a bug.",
+    description: "Someone should probably fix this.",
+    quantity: 1,
+    imgPath: '/svg/bug.svg',
+    isConsumable: true,
+}

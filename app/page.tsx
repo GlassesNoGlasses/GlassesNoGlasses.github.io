@@ -1,12 +1,13 @@
 'use client'
 
-import React from "react";
+import { use, useEffect, useState } from 'react';
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
 import { FaceRecognition, FingerPainting, SpamClassification, Biscord,
    SnakeAI, Grantors, MangaUpdate, WebpageAnalytics, FortuneCookie } from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
-import { BagIcon, CampfireIcon, MeteorsIcon } from "./constants/icons";
+import { BagIcon, BugIcon, CampfireIcon, MeteorsIcon } from "./constants/icons";
+import { Messages } from "./constants/messages";
 import { Item } from "./components/interfaces/Item";
 import { TimelineMilestone } from "./components/timeline/TimelineMilestone";
 import { Modal } from "./components/modal/Modal";
@@ -14,48 +15,73 @@ import { Inventory } from "./components/inventory/Inventory";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import { GameMessage } from "./components/game-message/GameMessage";
+import { Bug, Resume } from "./constants/inventoryItems";
+import { InventoryItem } from "./components/interfaces/InventoryItem";
 
 export default function Home() {
 
   const svgWidth: number = 100;
   const svgHeight: number = 100;
 
-  const [initials, setInitials] = React.useState<string>("N.W.");
-  const [titleText, setTitleText] = React.useState<string>("Professional Screen Addict");
-  const [meteors, setMeteors] = React.useState<Item>(MeteorsIcon);
-  const [campfire, setCampfire] = React.useState<Item>(CampfireIcon);
-  const [bag, setBag] = React.useState<Item>(BagIcon);
+  const [initials, setInitials] = useState<string>("N.W.");
+  const [titleText, setTitleText] = useState<string>("Professional Screen Addict");
+  const [meteors, setMeteors] = useState<Item>(MeteorsIcon);
+  const [campfire, setCampfire] = useState<Item>(CampfireIcon);
+  const [bag, setBag] = useState<Item>(BagIcon);
+  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>([Resume, Bug]);
+  const [numBugs, setNumBugs] = useState<number>(Bug.quantity);
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init();
   }, [])
 
-  const handleBagCallback = () => {
+  const handleBagCloseCallback = (items: InventoryItem[]) => {
+    setInventoryItems(items);
     setBag(prev => ({...prev, isActive: !prev.isActive, animation: ""}));
   }
+
+  const randomTitleText = (): string => {
+    const rndInt = Math.floor(Math.random() * Object.keys(Messages).length - 1) + 1;
+    return Messages[rndInt];
+  }
+
+  useEffect(() => {
+    console.log(numBugs)
+    if (numBugs === 2) {
+      setBag(prev => ({...prev, isActive: true, animation: "animate-spin"}));
+      setTitleText("🐞.🐞");
+    } else if (numBugs >= 4) {
+      setInitials(randomTitleText());
+      setTitleText("🐞🐞🐞🐞");
+    }
+  }, [numBugs])
 
   return (
     <main className="flex min-h-screen w-screen flex-col overflow-y-auto">
       {/* Inventory Modal */}
-      <Modal showModal={bag.isActive}
+      <Modal showModal={bag.isActive || numBugs >= 17}
       closeModal={() => setBag(prev => ({...prev, isActive: false}))}
       openModal={() => setBag(prev => ({...prev, isActive: true}))}>
-        <Inventory inventoryItems={[]} isActive={bag.isActive} callback={handleBagCallback}/>
+        <Inventory inventoryItems={inventoryItems} isActive={bag.isActive}
+        callback={(items) => handleBagCloseCallback(items)}
+        bugCallback={(numBugs) => setNumBugs(numBugs)}
+        bugs={numBugs}/>
       </Modal>
 
       {/* Top View & Introduction */}
-      <MeteorBackground numMeteors={13} isOn={meteors.isActive}/> 
+      {numBugs < 3 && <MeteorBackground numMeteors={13} isOn={meteors.isActive}/>}
       <div className={`flex flex-col h-screen w-screen bg-lofi bg-cover align-middle justify-center 
         ${meteors.isActive && !campfire.isActive ? "animate-lightFadeOut" : "animate-lightFadeIn"}
         ${campfire.isActive && "animate-lofiPulse"}`}
         >
           <ItemsBar
-          items={[
+          items={numBugs < 3 ? [
             {...meteors, callback: () => setMeteors(prev => ({...prev, isActive: !prev.isActive}))},
             {...campfire, callback: () => setCampfire(prev => ({...prev, isActive: !prev.isActive}))},
-            {...bag, callback: () => handleBagCallback()},
-          ]}
-          />
+            {...bag, callback: () => setBag(prev => ({...prev, isActive: !prev.isActive, animation: numBugs >=2 ? "animate-spin" : ""}))},
+          ] 
+          : [BugIcon, BugIcon, {...bag, callback: () => setBag(prev => ({...prev, isActive: !prev.isActive, animation: numBugs >=2 ? "animate-spin" : ""}))}]}
+            />
         <div className={`flex flex-col h-full w-full align-middle gap-4 justify-center
           ${(meteors.isActive || campfire.isActive) && "animate-lofiPulse"}`}>
           <h1 className="text-9xl text-center font-bold font-sans text-yellow-100" id="initials">{initials}</h1>
@@ -162,7 +188,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
     </main>
   );
 }
