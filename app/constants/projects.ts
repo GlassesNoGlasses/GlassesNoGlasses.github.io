@@ -26,6 +26,18 @@ const programming = {
     Jest: "/svg/jest.svg",
 }
 
+// Machine Learning Projects & AI
+
+export const MangaRecommendation: ProjectProps = {
+    title: "Manga Recommendation",
+    subtitle: "For All the Weebs Out There",
+    projectLink: "https://github.com/GlassesNoGlasses/PythonProjects/tree/main/Weeb-Recommendations",
+    description: `Find yourself scrolling through manga pages for hours on end? Can't find the perfect manga to read?
+    Or worse, have read all the good ones? Try out this manga recommendation model. Utilizing Python, NLTK, Genesis, and more.`,
+    languages: [programming.Python],
+    frameworks: [programming.SKLearn, programming.Pandas, programming.NumPy]
+}
+
 export const FaceRecognition: ProjectProps = {
     title: "Face Recognition",
     subtitle: "Your own Mac OS Face ID",
@@ -33,7 +45,6 @@ export const FaceRecognition: ProjectProps = {
     description: `One of the most fun and rewarding projects I've worked on, 
     this face recognition model implements both the LBPH and Eigenface approaches utilizing OpenCV, Scikit-Learn, Pandas, and NumPy. 
     Custom data pipelines were created to preprocess and augment the users facial data, captured using webcams and the OpenCV library.`,
-    imagePaths: ["https://via.placeholder.com/150"],
     languages: [programming.Python],
     frameworks: [programming.OpenCV, programming.SKLearn, programming.Pandas, programming.NumPy]
 };
@@ -78,6 +89,19 @@ export const Grantors: ProjectProps = {
     This project utilized the MERN stack and Docker to create a full-stack web application that allows users to browse, apply, and manage grants.`,
     languages: [programming.TypeScript],
     frameworks: [programming.React, programming.TailwindCSS, programming.NodeJS, programming.MongoDB, programming.Jest]
+}
+
+// Web Development Projects
+
+export const JustForFun: ProjectProps = {
+    title: "Just-For-Fun",
+    subtitle: "Bringing Back the 3am Vibes",
+    projectLink: "https://just-for-fun-chi.vercel.app/",
+    description: `Ever have those random, sleep-deprived, 3am ideas that you thought were crazy, but then remembered that 
+    you're a developer and can actually make it happen? This project is a collection of those ideas, ranging from fun games to
+    random generators. Built with NextJS.`,
+    languages: [programming.TypeScript],
+    frameworks: [programming.React, programming.TailwindCSS, programming.NodeJS, programming.NextJS]
 }
 
 export const Biscord: ProjectProps = {
