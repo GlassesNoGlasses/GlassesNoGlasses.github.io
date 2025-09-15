@@ -3,10 +3,7 @@
 import { useEffect, useState } from 'react';
 import { MeteorBackground } from "./components/metors/MeteorBackground";
 import { Project } from "./components/project-display/Project";
-import { FaceRecognition, FingerPainting, SpamClassification, Biscord,
-   SnakeAI, Grantors, MangaUpdate, WebpageAnalytics, FortuneCookie, 
-   MangaRecommendation,
-   JustForFun} from "./constants/projects";
+import * as projects from "./constants/projects";
 import { ItemsBar } from "./components/items-bar/ItemsBar";
 import { BagIcon, BugIcon, CampfireIcon, MeteorsIcon } from "./constants/icons";
 import { Messages } from "./constants/messages";
@@ -128,28 +125,28 @@ export default function Home() {
               {/* Timeline */}
               <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
                 {/* <!-- Project #1 --> */}
-                <TimelineMilestone id={MangaRecommendation.title} compelete={false} backgroundStyle="">
-                  <Project {...MangaRecommendation}/>
+                <TimelineMilestone id={projects.MangaRecommendation.title} compelete={false} backgroundStyle="">
+                  <Project {...projects.MangaRecommendation}/>
                 </TimelineMilestone>
 
                 {/* <!-- Project #2 --> */}
-                <TimelineMilestone id={FaceRecognition.title} compelete={true} backgroundStyle="">
-                  <Project {...FaceRecognition} leftAnimate={false}/>
+                <TimelineMilestone id={projects.FaceRecognition.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.FaceRecognition} leftAnimate={false}/>
                 </TimelineMilestone>
                   
                   {/* <!-- Project #3 --> */}
-                <TimelineMilestone id={SpamClassification.title} compelete={true} backgroundStyle="">
-                  <Project {...SpamClassification}/>
+                <TimelineMilestone id={projects.SpamClassification.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.SpamClassification}/>
                 </TimelineMilestone>
                 
                 {/* <!-- Project #4 --> */}
-                <TimelineMilestone id={SnakeAI.title} compelete={true} backgroundStyle="">
-                  <Project {...SnakeAI} leftAnimate={false}/>
+                <TimelineMilestone id={projects.SnakeAI.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.SnakeAI} leftAnimate={false}/>
                 </TimelineMilestone>
                 
                 {/* <!-- Project #5 --> */}
-                <TimelineMilestone id={FingerPainting.title} compelete={true} backgroundStyle="">
-                  <Project {...FingerPainting}/>
+                <TimelineMilestone id={projects.FingerPainting.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.FingerPainting}/>
                 </TimelineMilestone>
               </div>
             </div>
@@ -166,33 +163,28 @@ export default function Home() {
               {/* Timeline */}
               <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
                 {/* <!-- Project #1 --> */}
-                <TimelineMilestone id={Biscord.title} compelete={false} backgroundStyle="">
-                  <Project {...Biscord}/>
+                <TimelineMilestone id={projects.JustForFun.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.JustForFun}/>
                 </TimelineMilestone>
 
                 {/* <!-- Project #2 --> */}
-                <TimelineMilestone id={JustForFun.title} compelete={true} backgroundStyle="">
-                  <Project {...JustForFun}/>
-                </TimelineMilestone>
-
-                {/* <!-- Project #3 --> */}
-                <TimelineMilestone id={Grantors.title} compelete={true} backgroundStyle="">
-                  <Project {...Grantors} leftAnimate={false}/>
+                <TimelineMilestone id={projects.Grantors.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.Grantors} leftAnimate={false}/>
                 </TimelineMilestone>
                   
-                  {/* <!-- Project #4 --> */}
-                <TimelineMilestone id={FortuneCookie.title} compelete={true} backgroundStyle="">
-                  <Project {...FortuneCookie}/>
+                  {/* <!-- Project #3 --> */}
+                <TimelineMilestone id={projects.FortuneCookie.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.FortuneCookie}/>
+                </TimelineMilestone>
+                
+                {/* <!-- Project #4 --> */}
+                <TimelineMilestone id={projects.MangaUpdate.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.MangaUpdate} leftAnimate={false}/>
                 </TimelineMilestone>
                 
                 {/* <!-- Project #5 --> */}
-                <TimelineMilestone id={MangaUpdate.title} compelete={true} backgroundStyle="">
-                  <Project {...MangaUpdate} leftAnimate={false}/>
-                </TimelineMilestone>
-                
-                {/* <!-- Project #6 --> */}
-                <TimelineMilestone id={WebpageAnalytics.title} compelete={true} backgroundStyle="">
-                  <Project {...WebpageAnalytics}/>
+                <TimelineMilestone id={projects.WebpageAnalytics.title} compelete={true} backgroundStyle="">
+                  <Project {...projects.WebpageAnalytics}/>
                 </TimelineMilestone>
               </div>
             </div>
